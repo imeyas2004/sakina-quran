@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sakîna – Le Coran selon votre état d'esprit</title>
+  <meta name="description" content="Choisissez comment vous vous sentez et découvrez des versets du Coran avec traduction et récitation audio. Puis testez-vous avec le jeu « Devine la sourate ».">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <div class="brand">
+      <span class="brand-ar">سكينة</span>
+      <span class="brand-fr">Sakîna</span>
+    </div>
+    <nav class="tabs" role="tablist">
+      <button class="tab active" data-view="sakina" role="tab">Mon état d'esprit</button>
+      <button class="tab" data-view="game" role="tab">Devine la sourate</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- VUE 1 : SAKINA -->
+    <section id="view-sakina" class="view active">
+      <div class="hero">
+        <h1>Comment vous sentez-vous aujourd'hui ?</h1>
+        <p>Choisissez un état d'esprit et recevez des versets pour vous accompagner.</p>
+        <ul class="features">
+          <li>📖 Versets selon votre état d'esprit</li>
+          <li>🎧 Récitation avec mots surlignés</li>
+          <li>🎙 Récitez et comparez</li>
+          <li>🎮 Jeu « Devine la sourate »</li>
+        </ul>
+      </div>
+      <div id="emotions" class="emotions"></div>
+
+      <div id="results" class="results hidden">
+        <div class="results-head">
+          <button id="back" class="link-btn">← Changer d'état d'esprit</button>
+          <h2 id="results-title"></h2>
+          <p id="results-intro" class="muted"></p>
+        </div>
+        <div id="verses"></div>
+      </div>
+    </section>
+
+    <!-- VUE 2 : JEU -->
+    <section id="view-game" class="view">
+      <div id="game"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Texte, traduction (Muhammad Hamidullah) et récitation (Mishary Alafasy) via l'API <a href="https://quran.com" target="_blank" rel="noopener">Quran.com</a>.</p>
+    <p>Réalisé par <strong id="author"></strong> – Projet TP</p>
+  </footer>
+
+  <audio id="player" preload="none"></audio>
+  <script src="emotions.js"></script>
+  <script src="app.js"></script>
+  <script src="record.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>

@@ -1,0 +1,205 @@
+:root {
+  --bg: #f6f3ec;
+  --card: #ffffff;
+  --ink: #1f2a2e;
+  --muted: #6b7478;
+  --green: #1f6b5a;
+  --green-dark: #164d41;
+  --gold: #b88a3b;
+  --line: #e4ded0;
+  --radius: 16px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Inter", system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.6;
+}
+
+.hidden { display: none !important; }
+.muted { color: var(--muted); }
+.center { text-align: center; }
+.error { color: #a33; text-align: center; }
+
+/* ---------- En-tête ---------- */
+.top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 20px;
+  background: var(--green);
+  color: #fff;
+}
+.brand { display: flex; align-items: baseline; gap: 10px; }
+.brand-ar { font-family: "Amiri", serif; font-size: 2rem; line-height: 1; }
+.brand-fr { font-weight: 600; font-size: 1.15rem; letter-spacing: .5px; }
+
+.tabs { display: flex; gap: 6px; }
+.tab {
+  border: 0;
+  background: rgba(255,255,255,.15);
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font: inherit;
+  font-size: .9rem;
+  cursor: pointer;
+}
+.tab.active { background: #fff; color: var(--green-dark); font-weight: 600; }
+
+/* ---------- Contenu ---------- */
+main { max-width: 760px; margin: 0 auto; padding: 24px 16px 40px; }
+.view { display: none; }
+.view.active { display: block; }
+
+.hero { text-align: center; margin: 16px 0 28px; }
+.hero h1 { font-size: 1.7rem; margin: 0 0 6px; }
+.hero p { color: var(--muted); margin: 0; }
+
+.emotions {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 12px;
+}
+.emotion {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 20px 12px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  font: inherit;
+  font-weight: 500;
+  color: var(--ink);
+  cursor: pointer;
+  transition: transform .15s, box-shadow .15s, border-color .15s;
+}
+.emotion:hover { transform: translateY(-3px); box-shadow: 0 6px 18px rgba(0,0,0,.08); border-color: var(--green); }
+.emoji { font-size: 2rem; }
+
+/* ---------- Résultats ---------- */
+.results-head { margin-bottom: 18px; }
+.results-head h2 { margin: 10px 0 4px; font-size: 1.5rem; }
+.results-head p { margin: 0; }
+
+.link-btn {
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  color: var(--green);
+  cursor: pointer;
+  font-weight: 500;
+}
+.link-btn:hover { text-decoration: underline; }
+
+.verse {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-bottom: 14px;
+}
+.verse-ref { font-size: .8rem; color: var(--gold); font-weight: 600; text-transform: uppercase; letter-spacing: .5px; }
+.arabic {
+  font-family: "Amiri", serif;
+  font-size: 1.9rem;
+  line-height: 2.2;
+  margin: 10px 0;
+  text-align: right;
+}
+.french { margin: 0 0 14px; font-size: 1rem; }
+
+.actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.btn {
+  border: 0;
+  background: var(--green);
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font: inherit;
+  font-size: .9rem;
+  cursor: pointer;
+}
+.btn:hover { background: var(--green-dark); }
+.btn:disabled { opacity: .5; cursor: not-allowed; }
+.btn.playing { background: var(--gold); }
+.btn.ghost { background: transparent; color: var(--green); border: 1px solid var(--green); }
+.btn.ghost:hover { background: rgba(31,107,90,.08); }
+
+/* ---------- Pied de page ---------- */
+footer {
+  text-align: center;
+  font-size: .82rem;
+  color: var(--muted);
+  padding: 20px 16px 30px;
+  border-top: 1px solid var(--line);
+}
+footer p { margin: 4px 0; }
+footer a { color: var(--green); }
+
+@media (max-width: 520px) {
+  .arabic { font-size: 1.6rem; }
+  .hero h1 { font-size: 1.4rem; }
+}
+
+/* ---------- Jeu : Devine la sourate ---------- */
+.game-title { text-align: center; font-size: 1.7rem; margin: 16px 0 8px; }
+.levels { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-top: 24px; }
+.level {
+  display: flex; flex-direction: column; gap: 4px; align-items: center;
+  padding: 22px 12px; background: var(--card); border: 1px solid var(--line);
+  border-radius: var(--radius); font: inherit; color: var(--ink); cursor: pointer;
+  transition: transform .15s, box-shadow .15s, border-color .15s;
+}
+.level:hover { transform: translateY(-3px); box-shadow: 0 6px 18px rgba(0,0,0,.08); border-color: var(--green); }
+.level strong { font-size: 1.15rem; }
+.game-head { display: flex; justify-content: space-between; font-size: .9rem; color: var(--muted); margin-bottom: 10px; }
+.score { font-weight: 600; color: var(--green); }
+.game-ask { text-align: center; font-weight: 600; margin: 18px 0 12px; }
+.choices { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.choice {
+  display: flex; flex-direction: column; align-items: center; gap: 2px;
+  padding: 14px 10px; background: var(--card); border: 2px solid var(--line);
+  border-radius: var(--radius); font: inherit; font-weight: 500; color: var(--ink); cursor: pointer;
+}
+.choice:hover:not(:disabled) { border-color: var(--green); }
+.choice:disabled { cursor: default; }
+.choice-ar { font-family: "Amiri", serif; font-size: 1.25rem; color: var(--muted); }
+.choice.correct { background: #e3f4ea; border-color: #2e9e63; }
+.choice.wrong { background: #fbe6e6; border-color: #c94a4a; }
+.feedback { margin-top: 18px; padding: 16px 18px; border-radius: var(--radius); background: var(--card); border: 1px solid var(--line); }
+.feedback.ok { border-color: #2e9e63; }
+.feedback.ko { border-color: #c94a4a; }
+.feedback p { margin: 6px 0; }
+.feedback .btn { margin-top: 8px; }
+.final-score { text-align: center; font-size: 3rem; font-weight: 700; color: var(--green); margin: 12px 0 4px; }
+.center-actions { justify-content: center; margin-top: 18px; }
+
+@media (max-width: 520px) {
+  .choices { grid-template-columns: 1fr; }
+}
+
+/* ---------- Karaoké : mot récité ---------- */
+.w { border-radius: 8px; padding: 0 3px; transition: background .12s, color .12s; }
+.w.done { color: var(--green); }
+.w.on { background: #f3e2b8; color: var(--green-dark); }
+
+/* ---------- Récite et compare ---------- */
+.recbox { margin-top: 14px; padding: 12px 14px; background: var(--bg); border-radius: 12px; }
+.rec-status { margin: 0 0 8px; font-size: .92rem; }
+.rec-note { margin: 8px 0 0; font-size: .8rem; }
+.btn.recording { background: #c94a4a; animation: pulse 1.2s infinite; }
+@keyframes pulse { 50% { opacity: .65; } }
+
+/* ---------- Présentation des fonctions ---------- */
+.features { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; padding: 0; margin: 16px 0 0; }
+.features li { background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; font-size: .85rem; color: var(--ink); }
