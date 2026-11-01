@@ -10,6 +10,7 @@ Sakîna (سكينة, "inner peace") is a small Quranic web app built with plain 
 - **Verses by state of mind** – choose how you feel (anxious, sad, stressed by an exam, hopeful, grateful, lost, angry, remorseful, in need of patience) and get a hand-picked list of verses with the Arabic text and a French translation.
 - **Karaoke recitation** – while the recitation plays, each Arabic word lights up at the moment it is recited (word timings come from the API). Words already recited turn green.
 - **Recite and compare** – record your own recitation with the microphone, then listen to the reciter followed by you. The recording stays in your browser and is never uploaded.
+- **Hifdh (memorisation)** – pick any verse and hide more and more of its words, click a hidden word to reveal it; or play "Complete the verse" where one word is missing and you choose among 4.
 - **Guess the surah (game)** – 10 questions per game: a verse is shown, find which surah it comes from. Two levels: easy (short surahs) and hard (all 114).
 
 ## Data and API
@@ -33,6 +34,7 @@ Open `index.html` in a browser (internet connection required).
 | `app.js` | API calls, verse cards, audio, karaoke |
 | `record.js` | Record and compare |
 | `game.js` | Guess the surah game |
+| `hifdh.js` | Memorisation and complete-the-verse |
 
 ## Français
 

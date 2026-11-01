@@ -19,6 +19,7 @@
     <nav class="tabs" role="tablist">
       <button class="tab active" data-view="sakina" role="tab">Mon état d'esprit</button>
       <button class="tab" data-view="game" role="tab">Devine la sourate</button>
+      <button class="tab" data-view="hifdh" role="tab">Hifdh</button>
     </nav>
   </header>
 
@@ -33,6 +34,7 @@
           <li>🎧 Récitation avec mots surlignés</li>
           <li>🎙 Récitez et comparez</li>
           <li>🎮 Jeu « Devine la sourate »</li>
+          <li>🧠 Hifdh : mémoriser et compléter</li>
         </ul>
       </div>
       <div id="emotions" class="emotions"></div>
@@ -51,6 +53,11 @@
     <section id="view-game" class="view">
       <div id="game"></div>
     </section>
+
+    <!-- VUE 3 : HIFDH (mémorisation) -->
+    <section id="view-hifdh" class="view">
+      <div id="hifdh"></div>
+    </section>
   </main>
 
   <footer>
@@ -63,5 +70,6 @@
   <script src="app.js"></script>
   <script src="record.js"></script>
   <script src="game.js"></script>
+  <script src="hifdh.js"></script>
 </body>
 </html>
