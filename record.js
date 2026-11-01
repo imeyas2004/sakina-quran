@@ -4,20 +4,29 @@
 // Utilise stopAudio() défini dans app.js.
 
 let playing = []; // sons de « Récite et compare » en cours de lecture
+let mineHook = null; // fonction appelée quand la séquence s'arrête (ex. bouton « Répéter »)
+
+function runMineHook() {
+  if (mineHook) { const h = mineHook; mineHook = null; h(); }
+}
 
 function stopMine() {
   playing.forEach((a) => a.pause());
   playing = [];
+  runMineHook();
 }
 
 // Joue des sons les uns après les autres (ex. récitateur, puis vous)
-function playSequence(urls) {
+function playSequence(urls, onDone) {
   stopAudio(); // coupe le lecteur principal et les sons en cours
+  mineHook = onDone || null;
   const list = urls.map((u) => new Audio(u));
   playing = list;
   list.forEach((a, i) => {
     a.addEventListener("ended", () => {
-      if (playing === list && list[i + 1]) list[i + 1].play().catch(() => {});
+      if (playing !== list) return;
+      if (list[i + 1]) list[i + 1].play().catch(() => {});
+      else { playing = []; runMineHook(); }
     });
   });
   list[0].play().catch(() => {});

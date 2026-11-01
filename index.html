@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <script>try{var t=localStorage.getItem("sakina:theme");if(!t&&window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)t="dark";if(t==="dark")document.documentElement.dataset.theme="dark";}catch(e){}</script>
 </head>
 <body>
   <header class="top">
@@ -17,10 +18,13 @@
       <span class="brand-fr">Sakîna</span>
     </div>
     <nav class="tabs" role="tablist">
-      <button class="tab active" data-view="sakina" role="tab">Mon état d'esprit</button>
-      <button class="tab" data-view="game" role="tab">Devine la sourate</button>
+      <button class="tab active" data-view="sakina" role="tab">Émotions</button>
+      <button class="tab" data-view="game" role="tab">Jeu</button>
       <button class="tab" data-view="hifdh" role="tab">Hifdh</button>
+      <button class="tab" data-view="daily" role="tab">Défi du jour</button>
+      <button class="tab" data-view="me" role="tab">Mon espace</button>
     </nav>
+    <button id="theme" class="theme" type="button" aria-label="Mode sombre">🌙</button>
   </header>
 
   <main>
@@ -35,6 +39,8 @@
           <li>🎙 Récitez et comparez</li>
           <li>🎮 Jeu « Devine la sourate »</li>
           <li>🧠 Hifdh : mémoriser et compléter</li>
+          <li>📅 Défi du jour</li>
+          <li>⭐ Favoris et progression</li>
         </ul>
       </div>
       <div id="emotions" class="emotions"></div>
@@ -58,6 +64,16 @@
     <section id="view-hifdh" class="view">
       <div id="hifdh"></div>
     </section>
+
+    <!-- VUE 4 : DÉFI DU JOUR -->
+    <section id="view-daily" class="view">
+      <div id="daily"></div>
+    </section>
+
+    <!-- VUE 5 : MON ESPACE (favoris + progression) -->
+    <section id="view-me" class="view">
+      <div id="space"></div>
+    </section>
   </main>
 
   <footer>
@@ -67,9 +83,13 @@
 
   <audio id="player" preload="none"></audio>
   <script src="emotions.js"></script>
+  <script src="store.js"></script>
   <script src="app.js"></script>
   <script src="record.js"></script>
   <script src="game.js"></script>
   <script src="hifdh.js"></script>
+  <script src="daily.js"></script>
+  <script src="space.js"></script>
+  <script src="extras.js"></script>
 </body>
 </html>

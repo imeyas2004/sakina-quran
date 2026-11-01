@@ -169,6 +169,28 @@ function renderMem(chapters) {
   play.addEventListener("click", () => toggleAudio(play, v.audio));
   const audioRow = el("div", "actions center-actions");
   audioRow.appendChild(play);
+
+  // Écoute en boucle : répète le verset 3, 5 ou 10 fois
+  const loopSel = document.createElement("select");
+  loopSel.setAttribute("aria-label", "Nombre de répétitions");
+  [3, 5, 10].forEach((t) => {
+    const o = document.createElement("option");
+    o.value = t;
+    o.textContent = t + " fois";
+    loopSel.appendChild(o);
+  });
+  const loopBtn = el("button", "btn ghost", "🔁 Répéter");
+  if (!v.audio) loopBtn.disabled = true;
+  loopBtn.addEventListener("click", () => {
+    if (loopBtn.dataset.on) { stopAudio(); return; } // arrêt manuel
+    const reset = () => { delete loopBtn.dataset.on; loopBtn.textContent = "🔁 Répéter"; };
+    loopBtn.dataset.on = "1";
+    loopBtn.textContent = "⏹ Arrêter";
+    playSequence(Array(Number(loopSel.value)).fill(v.audio), reset);
+  });
+  audioRow.appendChild(loopSel);
+  audioRow.appendChild(loopBtn);
+  if (typeof favButton === "function") audioRow.appendChild(favButton(v.key));
   card.appendChild(audioRow);
 
   card.appendChild(el("p", "french", v.french));
@@ -285,6 +307,7 @@ function compFeedback(chapters, v, good) {
 }
 
 function compEnd() {
+  if (typeof recordResult === "function") recordResult("comp", comp.score);
   hfContent.innerHTML = "";
   hfContent.appendChild(el("h2", "game-title", "Partie terminée"));
   hfContent.appendChild(el("p", "final-score", comp.score + " / " + comp.total));

@@ -85,6 +85,7 @@ function toggleAudio(btn, url, k) {
   stopAudio();
   if (!url) return;
   karaoke = k || null;
+  if (typeof markToday === "function") markToday(); // compte pour la série de jours
   player.src = url;
   player.play().catch(() => {
     btn.textContent = "Audio indisponible";
@@ -213,6 +214,7 @@ function buildCard(v, chapters) {
     }
     setTimeout(() => (copyBtn.textContent = "Copier"), 1500);
   });
+  if (typeof attachExtras === "function") attachExtras(card, v, chapters); // favoris + image
   if (typeof attachRecorder === "function") attachRecorder(card, v); // « Récite et compare »
   return card;
 }

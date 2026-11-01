@@ -148,6 +148,7 @@ function showFeedback(chapters, verse, answer, verseNumber, good) {
 // ---------- Fin de partie ----------
 function showEnd() {
   stopAudio();
+  if (typeof recordResult === "function") recordResult("game", game.score);
   const ratio = game.score / GAME_TOTAL;
   let message = "Continuez, vous allez progresser !";
   if (ratio >= 0.9) message = "Excellent, mashaAllah !";
