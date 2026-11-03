@@ -2,9 +2,7 @@
 // Seules les références (sourate:verset) sont écrites ici.
 // Le texte arabe, la traduction et l'audio viennent TOUJOURS de l'API.
 
-//const AUTHOR = "Rahal imene"; // <-- votre nom
-
-const AUTHOR = 'tzid tgla3li swalhi mntfhmouche sion nebghiik khnez tl9a whda t3brlk hak tfou mtswech'
+const AUTHOR = "Rahal imene"; // <-- votre nom
 
 const EMOTIONS = [
   {
