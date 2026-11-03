@@ -18,7 +18,7 @@ async function getChapters() {
   const data = await res.json();
   chaptersCache = {};
   data.chapters.forEach((c) => {
-    chaptersCache[c.id] = { arabic: c.name_arabic, latin: c.name_simple, translated: c.translated_name.name, verses: c.verses_count };
+    chaptersCache[c.id] = { arabic: c.name_arabic, latin: c.name_simple, translated: c.translated_name.name, verses: c.verses_count, place: c.revelation_place || "" };
   });
   return chaptersCache;
 }
@@ -150,7 +150,7 @@ function renderEmotions() {
   EMOTIONS.forEach((e) => {
     const b = document.createElement("button");
     b.className = "emotion";
-    b.innerHTML = `<span class="emoji">${e.emoji}</span><span>${e.label}</span>`;
+    b.innerHTML = `<span class="emoji">${e.emoji}</span><span>${e.label}</span><span class="em-ar" lang="ar" dir="rtl">${e.ar || ""}</span>`;
     b.addEventListener("click", () => showEmotion(e));
     wrap.appendChild(b);
   });
@@ -162,8 +162,17 @@ async function showEmotion(emotion) {
   $("#emotions").classList.add("hidden");
   document.querySelector("#view-sakina .hero").classList.add("hidden");
   $("#results").classList.remove("hidden");
-  $("#results-title").textContent = `${emotion.emoji} ${emotion.label}`;
-  $("#results-intro").textContent = emotion.intro;
+  $("#results-title").textContent = `${emotion.emoji} ${emotion.label}` + (emotion.ar ? ` · ${emotion.ar}` : "");
+  const introBox = $("#results-intro");
+  introBox.textContent = emotion.intro;
+  if (emotion.introAr) {
+    const ar = document.createElement("span");
+    ar.className = "intro-ar";
+    ar.lang = "ar";
+    ar.dir = "rtl";
+    ar.textContent = emotion.introAr;
+    introBox.appendChild(ar);
+  }
 
   const box = $("#verses");
   box.innerHTML = `<p class="muted center">Chargement des versets…</p>`;

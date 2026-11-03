@@ -27,6 +27,7 @@ async function renderSpace() {
   tiles.appendChild(tile("🏆", s.best.game + "/10", "meilleur score – Jeu"));
   tiles.appendChild(tile("🧠", s.best.comp + "/5", "meilleur score – Complète"));
   tiles.appendChild(tile("📅", s.best.daily + "/10", "meilleur Défi du jour"));
+  tiles.appendChild(tile("🎓", (s.best.tajwid || 0) + "/5", "meilleur quiz Tajwid"));
   tiles.appendChild(tile("⭐", favs.length, favs.length > 1 ? "versets favoris" : "verset favori"));
   spaceBox.appendChild(tiles);
 

@@ -14,15 +14,15 @@ function wordsOf(v) {
   return v.words.length ? v.words.map((w) => w.text) : v.arabic.split(" ").filter(Boolean);
 }
 
-// Cadre commun : titre + deux modes
+// Cadre commun : titre + trois modes
 function hfShell(active) {
   stopAudio();
   hfBox.innerHTML = "";
   hfBox.appendChild(el("h1", "game-title", "Hifdh – Mémorisation"));
   const modes = el("div", "modes");
-  [["memorize", "Mémoriser"], ["complete", "Complète le verset"]].forEach(([key, label]) => {
+  [["memorize", "Mémoriser"], ["complete", "Complète le verset"], ["recite", "Réciter (bêta)"]].forEach(([key, label]) => {
     const b = el("button", "mode" + (key === active ? " active" : ""), label);
-    b.addEventListener("click", () => (key === "memorize" ? memStart() : compStart()));
+    b.addEventListener("click", () => (key === "memorize" ? memStart() : key === "complete" ? compStart() : reciteStart()));
     modes.appendChild(b);
   });
   hfBox.appendChild(modes);

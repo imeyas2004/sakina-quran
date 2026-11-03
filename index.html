@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1f6b5a">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%231f6b5a'/%3E%3Ctext x='50' y='70' font-size='58' text-anchor='middle' fill='white'%3E%D8%B3%3C/text%3E%3C/svg%3E">
   <title>Sakîna – Le Coran selon votre état d'esprit</title>
   <meta name="description" content="Choisissez comment vous vous sentez et découvrez des versets du Coran avec traduction et récitation audio. Puis testez-vous avec le jeu « Devine la sourate ».">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,11 +20,16 @@
       <span class="brand-fr">Sakîna</span>
     </div>
     <nav class="tabs" role="tablist">
-      <button class="tab active" data-view="sakina" role="tab">Émotions</button>
-      <button class="tab" data-view="game" role="tab">Jeu</button>
-      <button class="tab" data-view="hifdh" role="tab">Hifdh</button>
-      <button class="tab" data-view="daily" role="tab">Défi du jour</button>
-      <button class="tab" data-view="me" role="tab">Mon espace</button>
+      <button class="tab active" data-view="sakina" role="tab"><span>Émotions</span><span class="tab-ar" lang="ar" dir="rtl">المشاعر</span></button>
+      <button class="tab" data-view="game" role="tab"><span>Jeu</span><span class="tab-ar" lang="ar" dir="rtl">لعبة</span></button>
+      <button class="tab" data-view="wheel" role="tab"><span>Roue</span><span class="tab-ar" lang="ar" dir="rtl">العجلة</span></button>
+      <button class="tab" data-view="hifdh" role="tab"><span>Hifdh</span><span class="tab-ar" lang="ar" dir="rtl">الحفظ</span></button>
+      <button class="tab" data-view="rafiq" role="tab"><span>Tathbît</span><span class="tab-ar" lang="ar" dir="rtl">تثبيت</span></button>
+      <button class="tab" data-view="mutash" role="tab"><span>Mutashabihât</span><span class="tab-ar" lang="ar" dir="rtl">المتشابهات</span></button>
+      <button class="tab" data-view="maps" role="tab"><span>Cartes</span><span class="tab-ar" lang="ar" dir="rtl">خرائط ذهنية</span></button>
+      <button class="tab" data-view="tajwid" role="tab"><span>Tajwid</span><span class="tab-ar" lang="ar" dir="rtl">التجويد</span></button>
+      <button class="tab" data-view="daily" role="tab"><span>Défi</span><span class="tab-ar" lang="ar" dir="rtl">التحدي</span></button>
+      <button class="tab" data-view="me" role="tab"><span>Espace</span><span class="tab-ar" lang="ar" dir="rtl">مساحتي</span></button>
     </nav>
     <button id="theme" class="theme" type="button" aria-label="Mode sombre">🌙</button>
   </header>
@@ -32,13 +39,20 @@
     <section id="view-sakina" class="view active">
       <div class="hero">
         <h1>Comment vous sentez-vous aujourd'hui ?</h1>
+        <p class="hero-ar" lang="ar" dir="rtl">كيف تشعر اليوم؟</p>
         <p>Choisissez un état d'esprit et recevez des versets pour vous accompagner.</p>
+        <p class="hero-ar" lang="ar" dir="rtl">اختر حالتك لتصلك آيات تناسبها.</p>
         <ul class="features">
           <li>📖 Versets selon votre état d'esprit</li>
           <li>🎧 Récitation avec mots surlignés</li>
           <li>🎙 Récitez et comparez</li>
           <li>🎮 Jeu « Devine la sourate »</li>
           <li>🧠 Hifdh : mémoriser et compléter</li>
+          <li>🤝 Tathbît (تثبيت) : réviser à plusieurs</li>
+          <li>🎡 Roue (العجلة) : tourne et réponds</li>
+          <li>🔍 Mutashabihât (المتشابهات) : versets qui se ressemblent</li>
+          <li>🗺 Cartes mentales (خرائط ذهنية)</li>
+          <li>🎓 Tajwid : leçons pour débutants</li>
           <li>📅 Défi du jour</li>
           <li>⭐ Favoris et progression</li>
         </ul>
@@ -65,6 +79,31 @@
       <div id="hifdh"></div>
     </section>
 
+    <!-- VUE : TATHBÎT (réviser à plusieurs) -->
+    <section id="view-rafiq" class="view">
+      <div id="rafiq"></div>
+    </section>
+
+    <!-- VUE : ROUE -->
+    <section id="view-wheel" class="view">
+      <div id="wheel"></div>
+    </section>
+
+    <!-- VUE : MUTASHABIHÂT -->
+    <section id="view-mutash" class="view">
+      <div id="mutash"></div>
+    </section>
+
+    <!-- VUE : CARTES MENTALES -->
+    <section id="view-maps" class="view">
+      <div id="maps"></div>
+    </section>
+
+    <!-- VUE : TAJWID (leçons pour débutants) -->
+    <section id="view-tajwid" class="view">
+      <div id="tajwid"></div>
+    </section>
+
     <!-- VUE 4 : DÉFI DU JOUR -->
     <section id="view-daily" class="view">
       <div id="daily"></div>
@@ -88,6 +127,12 @@
   <script src="record.js"></script>
   <script src="game.js"></script>
   <script src="hifdh.js"></script>
+  <script src="rafiq.js"></script>
+  <script src="tajwid.js"></script>
+  <script src="recite.js"></script>
+  <script src="wheel.js"></script>
+  <script src="mutash.js"></script>
+  <script src="maps.js"></script>
   <script src="daily.js"></script>
   <script src="space.js"></script>
   <script src="extras.js"></script>
